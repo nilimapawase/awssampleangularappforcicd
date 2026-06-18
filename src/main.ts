@@ -111,7 +111,7 @@ import { provideRouter, RouterOutlet, Routes } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-shell',
   standalone: true,
   imports: [RouterOutlet],
   template: `<router-outlet></router-outlet>`
