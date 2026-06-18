@@ -14,10 +14,10 @@ phases:
   build:
     commands:
       - echo "Building the Angular application..."
-      - npm run build -- --configuration production
+      - npx ng build --configuration production
 
 artifacts:
   files:
     - '**/*'
-  base-directory: dist/myapp/browser
+  base-directory: dist/myapp
   discard-paths: no
