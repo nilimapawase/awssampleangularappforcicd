@@ -1,0 +1,16 @@
+<h2>Welcome</h2>
+<table>
+    <tr>
+        <td>Number 1:</td>
+        <td><input type="text" [(ngModel)]="num1"/></td>
+    </tr>
+    <tr>
+        <td>Number 2:</td>
+        <td><input type="text" [(ngModel)]="num2"/></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Add" (click)="addition(num1,num2)"/></td>
+    </tr>
+</table>
+<hr>
+<h2>Addition = {{result}}</h2>

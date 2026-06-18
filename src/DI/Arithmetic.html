@@ -1,0 +1,24 @@
+<h2>Arithmetic Operations</h2>
+<h2>Dependency Injection</h2>
+
+<table>
+    <tr>
+        <td>Number 1=</td>
+        <td><input type="text" [(ngModel)]="num1"/></td>
+    </tr>
+     <tr>
+        <td>Number 2=</td>
+        <td><input type="text" [(ngModel)]="num2"/></td>
+    </tr>
+     <tr>
+        <td colspan="2">
+            <input type="button" value="Add" (click)="Add(num1,num2)"/>&nbsp;
+            <input type="button" value="Sub" (click)="Sub(num1,num2)"/>&nbsp;
+            <input type="button" value="Mul" (click)="Mul(num1,num2)"/>&nbsp;
+            <input type="button" value="Div" (click)="Div(num1,num2)"/>
+
+        </td>
+    </tr>
+</table>
+<hr/>
+<h3>{{result}}</h3>

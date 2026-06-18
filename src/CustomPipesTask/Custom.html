@@ -1,0 +1,18 @@
+<h2>Custom Pipe Tasks</h2>
+==================================================
+<h3>Check Prime Number </h3>
+<input type="text" [(ngModel)]="num" />
+<!-- <h3>{{num|prime}}</h3> --><br/>
+========================================================
+<h3>Addition Between Rage</h3>
+
+Start: <input type="text" [(ngModel)]="start"/>
+<br/><br/>
+End : <input type="text" [(ngModel)]="end"/>
+<br/>
+<br/>
+<h3>{{start|additioninrange:end}}</h3>
+
+<h3>{{start|prime:end}}</h3>
+=====================================================<br/>
+<button (click)="ClearData()">Clear</button>

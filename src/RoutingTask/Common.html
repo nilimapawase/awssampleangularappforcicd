@@ -1,0 +1,78 @@
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #e3f2fd;">
+        <div class="container-fluid">
+            <a href="#" class="navbar-brand">MyApp</a>
+            <button type="button" class="navbar-toggler"
+                data-bs-toggle="collapse" data-bs-target="#navbarCollapse9">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse9">
+                <div class="navbar-nav ms-auto">
+                    @if(isLogin)
+                    {
+                        <span class="nav-link">
+                        Hi {{username}}
+                    </span>
+                    <button class="nav-link" (click)=" LogOut()">LogOut</button>
+                    }
+                    @else
+                    {
+                        <a routerLink="/login" class="nav-item nav-link">Login</a>
+                        <a routerLink="/register" class="nav-item nav-link">Register</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid">
+
+    @if(isLogin){
+
+    <div class="row">
+
+        <div class="col-md-2 border-end">
+
+            <p>
+                <a routerLink="/dashboard">Dashboard</a>
+            </p>
+
+            <p>
+                <a routerLink="/employee">Employee</a>
+            </p>
+
+            <p>
+                <a routerLink="/student">Student</a>
+            </p>
+
+            <p>
+                <a routerLink="/exam">Exam</a>
+            </p>
+
+            <p>
+                <a routerLink="/certification">Certification</a>
+            </p>
+
+        </div>
+
+        <div class="col-md-10">
+            <router-outlet></router-outlet>
+        </div>
+
+    </div>
+
+    }
+    @else{
+
+        <router-outlet></router-outlet>
+
+    }
+
+</div>
+
+
+<div style="text-decoration: none;" target="_blank">
+    <p>@2026 <a href="https://ciitstudent.com"> CIIT Training Institute Vaiduwadi, Pune</a></p>
+</div>

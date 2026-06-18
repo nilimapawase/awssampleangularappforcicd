@@ -1,0 +1,20 @@
+<h2>Welcome to Child component</h2>
+    <h3>Roll No= {{rno}}</h3>
+    <h3>Student Name= {{name}}</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>State Id</th>
+            <th>State Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(e of states;track e;let i=$index)
+        {
+            <tr>
+                <td>{{e.state_id}}</td>
+                <td>{{e.state_name}}</td>
+            </tr>
+        }
+    </tbody>
+</table>

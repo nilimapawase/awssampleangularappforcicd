@@ -1,0 +1,61 @@
+<!-- <h2>Customer Page</h2> -->
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Customer Form</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Customer Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="c.customerName"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Mobile Number</label>
+                        <input type="text" class="form-control" [(ngModel)]="c.mobileNumber"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>City</label>
+                        <input type="text" class="form-control" [(ngModel)]="c.city"/>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="button" value="Submit" class="btn btn-primary" (click)="addCustomer(c)" [hidden]="btnstatus"/>&nbsp;
+                    <input type="button" value="Update" class="btn btn-info" (click)="updateCustomer(c)" [hidden]="!btnstatus" />&nbsp;
+                    <input type="button" value="Cancle" class="btn btn-danger" (click)="clearData()"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Customer Name</th>
+                        <th>Mobile Number</th>
+                        <th>City</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(c of customers;track c;let i=$index)
+                    {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{c.customerName}}</td>
+                            <td>{{c.mobileNumber}}</td>
+                            <td>{{c.city}}</td>
+                            <td>
+                                <button class="btn btn-info btn-sm" (click)="viewCustomer(c)">View</button>&nbsp;
+                                <button class="btn btn-danger btn-sm" (click)="removeCustomer(c.customerId)">Remove</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <h2>Login Form</h2>
+    <form #loginForm="ngForm" (submit)="SubmitData(loginForm.value)">
+        <table>
+            <tr>
+                <td>User Name:</td>
+                <td>
+                    <input type="text" name="username" [(ngModel)]="username"
+                        #usernameControl="ngModel" required minlength="2" />
+                </td>
+                <td>
+                    <!-- @if(usernameControl.invalid && usernameControl.touched){ -->
+                    @if(usernameControl.invalid){
+                    @if(usernameControl.errors?.["required"]){
+                    <span class="text-danger">User Name is required</span>
+                    }
+                    @if(usernameControl.errors?.["minlength"]){
+                    <span class="text-danger">User Name must be at least 2
+                        characters long</span>
+                    }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Email Address :</td>
+                <td>
+                    <input type="email" name="email" [(ngModel)]="email"
+                        #emailControl="ngModel" required email />
+                </td>
+                <td>
+                    @if(emailControl.invalid){
+                    @if(emailControl.errors?.["required"]){
+                    <span class="text-danger">Email address is required</span>
+                    }
+                    @if(emailControl.errors?.["email"]){
+                    <span class="text-danger">invalid email address</span>
+                    }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Password :</td>
+                <td>
+                    <input type="password" name="password"
+                        [(ngModel)]="password" #passwordControl="ngModel"
+                        required pattern="[a-zA-Z0-9]+" />
+                </td>
+                <td>
+                    @if(passwordControl.invalid){
+                    @if(passwordControl.errors?.["required"]){
+                    <span class="text-danger">Password is required</span>
+                    }
+                    @if(passwordControl.errors?.["pattern"]){
+                    <span class="text-danger">only alphanumeric are
+                        allowed</span>
+                    }
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    <h2 class="text-success">{{msg}}</h2>
+    <h2 class="text-danger">{{errormsg}}</h2>
+</div>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sr No</th>
+            <th>User NAme</th>
+            <th>Email Address</th>
+            <th>Password</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(e of loginList;track e;let i=$index)
+        {
+        <tr>
+            <td>{{i+1}}</td>
+            <td>{{e.username}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.password}}</td>
+            <td>
+                <button class="btn btn-info btn-sm"
+                    (click)="ViewLogin(e,i)">View</button>&nbsp;
+                <button class="btn btn-danger btn-sm"
+                    (click)="DeleteLogin(i)">Remove</button>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

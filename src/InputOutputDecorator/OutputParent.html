@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>Parent Component</h2>
+    <h2>{{counter}}</h2>
+<hr/>
+<output-child btnlabel="Button1" (btnsubmit)="Show($event)" btnclass="btn btn-primary"></output-child>
+<!-- &nbsp; -->
+<output-child btnlabel="Button2" (btnsubmit)="Show($event)" btnclass="btn btn-success"></output-child>
+<!-- &nbsp; -->
+<output-child btnlabel="Display" (btnsubmit)="Show($event)" btnclass="btn btn-danger"></output-child>
+<!-- &nbsp; -->
+<output-child btnlabel="Show" (btnsubmit)="Show($event)" btnclass="btn btn-info"></output-child>
+<!-- &nbsp; -->
+<output-child btnlabel="Submit" (btnsubmit)="Show($event)" btnclass="btn btn-warning"></output-child>
+</div>

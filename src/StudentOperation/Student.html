@@ -1,0 +1,153 @@
+<!-- <h2>Student Operation</h2>
+
+<table>
+    <tr>
+        <td>Roll No</td>
+        <td><input type="text" [(ngModel)]="rno"></td>
+    </tr>
+    <tr>
+        <td>Student Name</td>
+        <td><input type="text" [(ngModel)]="name"></td>
+    </tr>
+    <tr>
+        <td>English</td>
+        <td><input type="text" [(ngModel)]="english" (keyup)="Calculate(english,maths,science)"/></td>
+    </tr>
+    <tr>
+        <td>Maths</td>
+        <td><input type="text"[(ngModel)]="maths" (keyup)="Calculate(english,maths,science)"></td>
+    </tr>
+    <tr>
+        <td>Science</td>
+        <td><input type="text" [(ngModel)]="science" (keyup)="Calculate(english,maths,science)"></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td><input type="text" [(ngModel)]="total" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td>Percentage</td>
+        <td><input type="text" [(ngModel)]="percentage" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td><input type="text" [(ngModel)]="result" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td><input type="button" value="Submit" (click)="SubmitData(rno,name,english,maths,science,total,percentage,result)"></td>
+    </tr>
+</table>
+<hr/>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Name</th>
+            <th>English</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(s of studentlist;track s)
+        {
+            <tr>
+                <td>{{s.RollNo}}</td>
+                <td>{{s.Name}}</td>
+                <td>{{s.English}}</td>
+                <td>{{s.Maths}}</td>
+                <td>{{s.Science}}</td>
+                <td>{{s.Total}}</td>
+                <td>{{s.Percentage}}</td>
+                <td>{{s.Result}}</td>
+            </tr>
+        }
+    </tbody>
+</table>
+ -->
+
+
+ <h2>Student Operation</h2>
+
+<table>
+    <tr>
+        <td>Roll No</td>
+        <td><input type="text" [(ngModel)]="s.RollNo"></td>
+    </tr>
+    <tr>
+        <td>Student Name</td>
+        <td><input type="text" [(ngModel)]="s.StudentName"></td>
+    </tr>
+    <tr>
+        <td>English</td>
+        <td><input type="text" [(ngModel)]="s.English" (keyup)="Calculate(s)"/></td>
+    </tr>
+    <tr>
+        <td>Maths</td>
+        <td><input type="text"[(ngModel)]="s.Maths" (keyup)="Calculate(s)"></td>
+    </tr>
+    <tr>
+        <td>Science</td>
+        <td><input type="text" [(ngModel)]="s.Science" (keyup)="Calculate(s)"></td>
+    </tr>
+    <tr>
+        <td>Total</td>
+        <td><input type="text" [(ngModel)]="s.Total" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td>Percentage</td>
+        <td><input type="text" [(ngModel)]="s.Percentage" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td>Result</td>
+        <td><input type="text" [(ngModel)]="s.Result" [disabled]="true"></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="Submit" (click)="SubmitData(s)" [hidden]="btnstatus">&nbsp;
+            <input type="button" value="Update" (click)="UpdateData(s)" [hidden]="!btnstatus">&nbsp;
+            <input type="button" value="Clear" (click)="ClearData()"/>
+        </td>
+    </tr>
+</table>
+<hr/>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Roll No</th>
+            <th>Student Name</th>
+            <th>English</th>
+            <th>Maths</th>
+            <th>Science</th>
+            <th>Total</th>
+            <th>Percentage</th>
+            <th>Result</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(s of studentlist;track s;let i=$index)
+        {
+            <tr>
+                <td>{{s.RollNo}}</td>
+                <td>{{s.StudentName}}</td>
+                <td>{{s.English}}</td>
+                <td>{{s.Maths}}</td>
+                <td>{{s.Science}}</td>
+                <td>{{s.Total}}</td>
+                <td>{{s.Percentage}}</td>
+                <td>{{s.Result}}</td>
+                <td>
+                    <button (click)="ViewStudent(s,i)">View</button>
+                    &nbsp;
+                    <button (click)="DeleteData(i)">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

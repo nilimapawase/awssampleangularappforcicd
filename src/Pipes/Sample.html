@@ -1,0 +1,55 @@
+<h2>Pipe Demos</h2>
+---------------------------------------------
+<h3>{{fname}}</h3>
+<h3>{{fname|uppercase}}</h3>
+----------------------------------
+<h3>{{lname}}</h3>
+<h3>{{lname|lowercase}}</h3>
+-----------------------------------------
+<h3>{{per}}</h3>
+<h3>{{per|percent}}</h3>
+<h3>{{per|percent:'.2'}}</h3>
+<h3>{{per|percent:'.3'}}</h3>
+-----------------------------------------
+<h3>{{per1}}</h3>
+<h3>{{per1|percent}}</h3>
+<h3>{{per1|percent:'.2'}}</h3>
+<h3>{{per1|percent:'.3'}}</h3>
+-----------------------------------------
+<h3>{{amount|currency}}</h3>
+<h3>{{amount|currency:'INR'}}</h3>
+<h3>{{amount|currency:'USD'}}</h3>
+<h3>{{amount|currency:'BRL'}}</h3>
+<h3>{{amount|currency:'CAD'}}</h3>
+<h3>{{amount|currency:'EUD'}}</h3>
+<h3>{{amount|currency:'AUD'}}</h3>
+----------------------------------------------
+<h3>{{dt}}</h3>
+<h3>{{dt|date}}</h3>
+<h3>{{dt|date:'fullDate'}}</h3>
+<h3>{{dt|date:'medium'}}</h3>
+<h3>{{dt|date:'short'}}</h3>
+-----------------------------------------------
+<h3>{{data}}</h3>
+<h3>{{data|json}}</h3>
+<div>
+    {{data|json}}
+</div>
+===================================================
+<h3>Custom Pipes</h3>
+========================================================
+<input type="text" [(ngModel)]="n"/>
+<h3>{{n|square}}</h3>
+========================================================
+<table>
+    <tr>
+        <td>Number :</td>
+        <td><input type="text" [(ngModel)]="num"/></td>
+    </tr>
+    <tr>
+        <td>Power :</td>
+        <td><input type="text" [(ngModel)]="pow"/></td>
+    </tr>
+</table>
+<hr/>
+<h3>{{num|power:pow}}</h3>

@@ -1,0 +1,58 @@
+<!-- <h2>Login Page</h2> -->
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form #loginForm="ngForm" (submit)="SubmitData(loginForm.value)" >
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Login Form</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label>Email Address</label><br/>
+                            @if(emailControl.invalid){
+                            @if(emailControl.errors?.["required"]){
+                            <span class="text-danger">Email address is
+                                required</span>
+                            }
+                            @if(emailControl.errors?.["email"]){
+                            <span class="text-danger">invalid email
+                                address</span>
+                            }
+                            }
+                            <input type="email" name="email" [(ngModel)]="email"
+                                #emailControl="ngModel" required email class="form-control"/>
+                        </div>
+                        <div class="mb-3">
+                            <label>Password</label>
+                            <br/>
+                            @if(passwordControl.invalid){
+                            @if(passwordControl.errors?.["required"]){
+                            <span class="text-danger">Password is
+                                required</span>
+                            }
+                            @if(passwordControl.errors?.["pattern"]){
+                            <span class="text-danger">only alphanumeric are
+                                allowed</span>
+                            }
+                            }
+                            <input type="password" name="password"
+                                [(ngModel)]="password"
+                                #passwordControl="ngModel"
+                                required pattern="[a-zA-Z0-9]+" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Login"
+                            class="btn btn-primary" />
+                            <h5 class="text-success">{{msg}}</h5>
+                            <h5 class="text-danger">{{errormsg}}</h5>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>

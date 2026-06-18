@@ -1,0 +1,20 @@
+<h1>Common Page</h1>
+<h1>Routing Demo</h1>
+<div>
+    <div>
+        <a routerLink="/">Home</a>&nbsp;&nbsp;
+        <a routerLink="/about-us">About Us</a>&nbsp;&nbsp;
+        <a routerLink="/contact-us">Contact Us</a>&nbsp;&nbsp;
+        <!-- <a routerLink="/services">Services</a>&nbsp;&nbsp; -->
+        <a [routerLink]="['/services',10,'Ajay']">Services</a>&nbsp;&nbsp;
+
+    </div>
+    <hr/>
+    <div style="min-height: 500px;">
+        <router-outlet></router-outlet>
+    </div>
+    <hr/>
+    <div>
+        <p><a href="#" target="_blank" style="text-decoration: none;">@2026 CIIT Training Institute</a></p>
+    </div>
+</div>

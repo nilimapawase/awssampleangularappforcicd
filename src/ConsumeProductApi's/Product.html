@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Product Form</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label>Product Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="p.productName"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Rate</label>
+                        <input type="text" class="form-control" [(ngModel)]="p.rate"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>GST</label>
+                        <input type="text" class="form-control" [(ngModel)]="p.gst"/>
+                    </div>
+                    <div class="mb-3">
+                        <label>Stock Quantity</label>
+                        <input type="text" class="form-control" [(ngModel)]="p.stockQuantity"/>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="button" value="Submit" class="btn btn-primary" (click)="addProduct(p)" [hidden]="btnstatus"/>&nbsp;
+                    <input type="button" value="Update" class="btn btn-info" (click)="updateProduct(p)" [hidden]="!btnstatus" />&nbsp;
+                    <input type="button" value="Cancle" class="btn btn-danger" (click)="clearData()"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Product Name</th>
+                        <th>Rate</th>
+                        <th>GST</th>
+                        <th>Stock Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(p of products;track p;let i=$index)
+                    {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{p.productName}}</td>
+                            <td>{{p.rate}}</td>
+                            <td>{{p.gst}}</td>
+                            <td>{{p.stockQuantity}}</td>
+                            <td>
+                                <button class="btn btn-info btn-sm" (click)="viewProduct(p)">View</button>&nbsp;
+                                <button class="btn btn-danger btn-sm" (click)="removeProduct(p.productId)">Remove</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

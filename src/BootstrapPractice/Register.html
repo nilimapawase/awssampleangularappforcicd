@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8"></div>
+
+        <div class="col-md-4">
+            <div class="card">
+
+                <div class="card-header">
+                    <h3>Registration Form</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <div class="mb-2">
+                        <label>Name</label>
+                        <input type="text"
+                               class="form-control"
+                               [(ngModel)]="user.name">
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Email</label>
+                        <input type="email"
+                               class="form-control"
+                               [(ngModel)]="user.email">
+                    </div>
+
+                    <div class="mb-2">
+                        <label>Password</label>
+                        <input type="password"
+                               class="form-control"
+                               [(ngModel)]="user.password">
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button class="btn btn-primary"
+                            (click)="Register()">
+                        Register
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

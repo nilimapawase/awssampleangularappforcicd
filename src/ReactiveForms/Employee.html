@@ -1,0 +1,152 @@
+<div class="container-fluid">
+    <!-- <h2>Employee Form</h2> -->
+    <div class="row">
+        <div class="col-md-4">
+            <form [formGroup]="empform" (submit)="SubmitData(empform.value)">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Employee Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label>Employee Name</label>
+                            <!-- @if(empform.get("EmployeeName")?.invalid && empform.get("EmployeeName")?.touched){ -->
+                            <!-- @if(empform.get("EmployeeName")?.invalid && empform.get("EmployeeName")?.dirty){ -->
+                            @if(empform.get("EmployeeName")?.invalid &&
+                            empform.get("EmployeeName")?.touched){
+                            <div class="text-danger">
+                                @if(empform.get("EmployeeName").hasError("required")){
+                                <span>Employee Name is required</span>
+                                }
+                                @if(empform.get("EmployeeName").hasError("minlength")){
+                                <span>Minimum 2 chars are
+                                    required</span>
+                                }
+                                @if(empform.get("EmployeeName").hasError("maxlength")){
+                                <span>Maximum 10 chars are
+                                    required</span>
+                                }
+                            </div>
+                            }
+                            <input formControlName="EmployeeName"
+                                class="form-control" />
+                            <div class="mb-3">
+                                <label>Age</label>
+                                @if(empform.get("Age").invalid &&
+                                empform.get("Age")?.touched ){
+                                <div class="text-danger">
+                                    @if(empform.get("Age").hasError("required")){
+                                    <span>Age is required</span>
+                                    }
+                                    @if(empform.get("Age").hasError("min")){
+                                    <span>minimum age 18 is
+                                        required</span>
+                                    }
+                                    @if(empform.get("Age").hasError("max")){
+                                    <span>maximum age 30 is
+                                        required</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text" formControlName="Age"
+                                    class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Designation</label>
+                                @if(empform.get("Designation")?.invalid &&
+                                empform.get("Designation")?.touched){
+                                <div class="text-danger">
+                                    @if(empform.get("Designation").hasError("required")){
+                                    <span>Designation is required</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text"
+                                    formControlName="Designation"
+                                    class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Email Address</label>
+                                @if(empform.get("EmailAddress")?.invalid &&
+                                empform.get("EmailAddress")?.touched){
+                                <div class="text-danger">
+                                    @if(empform.get("EmailAddress").hasError("required")){
+                                    <span>Email Address is
+                                        required</span>
+                                    }
+                                    @if(empform.get("EmailAddress").hasError("email")){
+                                    <span>invalid email address</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text"
+                                    formControlName="EmailAddress"
+                                    class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Mobile Number</label>
+                                @if(empform.get("MobileNumber")?.invalid &&
+                                empform.get("MobileNumber")?.touched){
+                                <div class="text-danger">
+                                    @if(empform.get("MobileNumber").hasError("required")){
+                                    <span>Mobile Number is
+                                        required</span>
+                                    }
+                                    @if(empform.get("MobileNumber")?.hasError("pattern")){
+                                    <span>Enter a valid 10 digit mobile
+                                        number starting with 7, 8, or
+                                        9</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text"
+                                    formControlName="MobileNumber"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <input type="submit" value="Submit"
+                            [disabled]="!empform.valid"
+                            class="btn btn-primary" />&nbsp;
+                        <!-- <input type="button" value="Remove" (click)="RemoveEmployee()"/> -->
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Employee Name</th>
+                        <th>Age</th>
+                        <th>Email Address</th>
+                        <th>Mobile Number</th>
+                        <th>Designation</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(e of employeeList;track e;let i=$index)
+                    {
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{e.EmployeeName}}</td>
+                        <td>{{e.Age}}</td>
+                        <td>{{e.EmailAddress}}</td>
+                        <td>{{e.MobileNumber}}</td>
+                        <td>{{e.Designation}}</td>
+                        <td>
+                            <button class="btn btn-info btn-sm"
+                                (click)="ViewEmployee(e,i)">View</button>&nbsp;
+                            <button class="btn btn-danger btn-sm"
+                                (click)="RemoveEmployee(i)">Remove</button>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

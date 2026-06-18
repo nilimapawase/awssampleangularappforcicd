@@ -1,0 +1,54 @@
+<p>Hi Hello</p>
+<div>Welcome</div>
+<h3>{{a}}</h3>
+<h3>{{b}}</h3>
+<h3>{{name}}</h3>
+<p>{{age}}</p>
+
+<table border="1">
+    <tr>
+        <td>Student Id</td>
+        <td>{{st.StudentId}}</td>
+    </tr>
+    <tr>
+        <td>Student Name</td>
+        <td>{{st.StudentName}}</td>
+    </tr>
+    <tr>
+        <td>Student Age</td>
+        <td>{{st.StudentAge}}</td>
+    </tr>
+    <tr>
+        <td>Percentage</td>
+        <td>{{st.Percentage}}</td>
+    </tr>
+</table>
+<p>{{data}}</p>
+<ul>
+    @for(d of data;track d)
+    {
+        <li>{{d}}</li>
+    }
+</ul>
+<ul>
+    @for(d of data;track d; let i=$index)
+    {
+        <li>{{i+"=> "+d}}</li>
+    }
+</ul>
+
+<table border="1">
+    <tr>
+        <th>Student Id</th>
+        <th>Student Name</th>
+        <th>Student Age</th>
+    </tr>
+    @for(st of data1;track st)
+    {
+        <tr>
+            <td>{{st.StudentId}}</td>
+            <td>{{st.StudentName}}</td>
+            <td>{{st.StudentAge}}</td>
+        </tr>
+    }
+</table>

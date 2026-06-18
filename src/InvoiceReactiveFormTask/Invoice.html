@@ -1,0 +1,132 @@
+<div class="container-fluid">
+    <!-- <h2>Invoice Form</h2> -->
+    <div class="row">
+        <div class="col-md-4">
+            <form [formGroup]="invform" (submit)="SubmitData(invform.value)">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Invoice Form</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label>Product Name</label>
+                            <!-- @if(empform.get("EmployeeName")?.invalid && empform.get("EmployeeName")?.touched){ -->
+                            <!-- @if(empform.get("EmployeeName")?.invalid && empform.get("EmployeeName")?.dirty){ -->
+                            @if(invform.get("ProductName")?.invalid &&
+                            invform.get("ProductName")?.touched){
+                            <div class="text-danger">
+                                @if(invform.get("ProductName").hasError("required")){
+                                <span>Product Name is required</span>
+                                }
+                                @if(invform.get("ProductName").hasError("pattern")){
+                                <span> Only Characters are allowed, not allowed</span>
+                                }
+                            </div>
+                            }
+                            <input formControlName="ProductName"
+                                class="form-control" />
+                        <div class="mb-3">
+                                <label>Rate</label>
+                                @if(invform.get("Rate").invalid &&
+                                invform.get("Rate")?.touched ){
+                                <div class="text-danger">
+                                    @if(invform.get("Rate").hasError("required")){
+                                    <span>Rate is required</span>
+                                    }
+                                    @if(invform.get("Rate").hasError("min")){
+                                    <span>Rate must be positive, not negative</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text" formControlName="Rate"
+                                    class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>GST</label>
+                                @if(invform.get("GST")?.invalid &&
+                                invform.get("GST")?.touched){
+                                <div class="text-danger">
+                                    @if(invform.get("GST").hasError("required")){
+                                    <span>GST is required</span>
+                                    }
+                                    @if(invform.get("GST").hasError("min")){
+                                    <span>minimum 0% GST is required</span>
+                                    }
+                                    @if(invform.get("GST").hasError("max")){
+                                    <span>maximum 100% GST is required</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text"
+                                    formControlName="GST"
+                                    class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label>Quantity</label>
+                                @if(invform.get("Quantity")?.invalid &&
+                                invform.get("Quantity")?.touched){
+                                <div class="text-danger">
+                                    @if(invform.get("Quantity").hasError("required")){
+                                    <span>Quantity is
+                                        required</span>
+                                    }
+                                    @if(invform.get("Quantity").hasError("min")){
+                                    <span>Quantity must be positive, not equal to zero or negative</span>
+                                    }
+                                </div>
+                                }
+                                <input type="text"
+                                    formControlName="Quantity"
+                                    class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                            <input type="submit" value="Submit"
+                                [disabled]="!invform.valid"
+                                class="btn btn-primary" />&nbsp;
+                    </div>
+                    </div>
+                </form>
+        </div>
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Product Name</th>
+                            <th>Rate</th>
+                            <th>GST</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(e of invoiceList;track e;let i=$index)
+                        {
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{e.ProductName}}</td>
+                                 <td>{{e.Rate}}</td>
+                                  <td>{{e.GST}}%</td>
+                                   <td>{{e.Quantity}}</td>
+                                   <td>{{(e.Rate*e.Quantity)+((e.Rate*e.Quantity*e.GST)/100)}}</td>
+                                    <td>
+                                        <button class="btn btn-info btn-sm" (click)="ViewInvoice(e,i)">View</button>&nbsp;
+                                        <button class="btn btn-danger btn-sm" (click)="RemoveInvoice(i)">Remove</button>
+                                    </td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5"></td>
+                                <td>Final Amount</td>
+                                <td><b>{{TotalAmount}}</b></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>

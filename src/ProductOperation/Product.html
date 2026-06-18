@@ -1,0 +1,60 @@
+<h2>Product Operations</h2>
+<table>
+    <tr>
+        <td>Product Id</td>
+        <td><input type="text" [(ngModel)]="p.ProductId"/></td>
+    </tr>
+    <tr>
+        <td>Product Name</td>
+        <td><input type="text" [(ngModel)]="p.ProductName"/></td>
+    </tr>
+    <tr>
+        <td>Packing Date</td>
+        <td><input type="date" [(ngModel)]="p.Packing"/></td>
+    </tr>
+    <tr>
+        <td>Rate</td>
+        <td><input type="text" [(ngModel)]="p.Rate"/></td>
+    </tr>
+    <tr>
+        <td>Gst</td>
+        <td><input type="text" [(ngModel)]="p.Gst"/></td>
+    </tr>
+    <tr>
+        <td>
+            <input type="button" value="Submit" (click)="AddProduct(p)" [hidden]="btnstatus"/>&nbsp;
+            <input type="button" value="Update" (click)="UpdateProduct(p)" [hidden]="!btnstatus"/>&nbsp;
+            <input type="button" value="Clear" (click)="ClearData()"/>
+        </td>
+    </tr>
+</table>
+<hr/>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Packing</th>
+            <th>Rate</th>
+            <th>Gst</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(p of productlist;track p;let i=$index)
+        {
+            <tr>
+                <td>{{p.ProductId}}</td>
+                <td>{{p.ProductName}}</td>
+                <td>{{p.Packing}}</td>
+                <td>{{p.Rate}}</td>
+                <td>{{p.Gst}}</td>
+                <td>
+                    <input type="button" value="View" (click)="ViewProduct(p,i)"/>&nbsp;
+                    <input type="button" value="Delete" (click)="DeleteProduct(i)"/>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
